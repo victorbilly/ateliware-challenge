@@ -45,15 +45,19 @@ def saveRepos(request):
     count = 0;
     for lang_repo in repos_list:
         for obj in lang_repo:
-            q = Language.objects.get(name=obj['language'])
-            if q:
+            try:
+                q = Language.objects.get(name__iexact=obj['language'])
                 re  = Repository(language = q,
-                                 name     = obj['name'],
-                                 size     = obj['size'],
-                                 owner    = obj['owner']['login'],
-                                 url      = obj['url'])
+                                            name     = obj['name'],
+                                            size     = obj['size'],
+                                            owner    = obj['owner']['login'],
+                                            url      = obj['url'])
                 re.save(force_insert=True)
                 count += 1
+            except Language.DoesNotExist:
+                count
+                #skipping language
+
     msg = "Foram adicionados "+ str(count) +" repositórios "
     return render(request, "main_app/save.html", {"mensagem": msg,
                                                   "repos_list" : repos_list,

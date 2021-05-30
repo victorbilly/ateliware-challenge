@@ -2,7 +2,6 @@ from django.test import TestCase
 from webapp.models import Language
 
 class LoginTestCase(TestCase):
-
     def test_login(self):
         # First check for the default behavior
         response = self.client.get('/admin/')
@@ -13,12 +12,10 @@ class SimpleTest(TestCase):
         #redirecting case user is not authenticated
         response = self.client.get('/admin/webapp/language/')
         self.assertEqual(response.status_code, 302)
-
     def test_index(self):
         #checking index of application is ok
         response = self.client.get('')
         self.assertEqual(response.status_code, 200)
-
 
 class LanguageTestCase(TestCase):
     def setUp(self):
