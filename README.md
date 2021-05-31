@@ -16,9 +16,13 @@ Você precisará de acesso *sudo* para os comandos a seguir
 
 `$ docker-compose up -d --build`
 
-`$ docker-compose exec web python3 manage.py migrate` #para criar as migrações
+ Criar as migrações
+ 
+`$ docker-compose exec web python3 manage.py migrate`
 
-`$ docker-compose exec web python3 manage.py createsuperuser` #para criar usuário para área administrativa
+ Criar usuário para área administrativa
+ 
+`$ docker-compose exec web python3 manage.py createsuperuser`
 
 E finalmente
 
@@ -34,9 +38,13 @@ Usando [gunicorn](https://gunicorn.org/)
 
 `$ docker-compose -f docker-compose.prod.yml up -d --build`
 
-`$ docker-compose -f docker-compose.prod.yml exec web python3 manage.py migrate` #para criar as migrações
+ Criar as migrações
+ 
+`$ docker-compose -f docker-compose.prod.yml exec web python3 manage.py migrate`
 
-`$ docker-compose -f docker-compose.prod.yml exec web python3 manage.py createsuperuser` #Para criar usuário para área administrativa
+ Criar usuário para área administrativa
+ 
+`$ docker-compose -f docker-compose.prod.yml exec web python3 manage.py createsuperuser`
 
 E, por fim
 
